@@ -18,21 +18,21 @@ app.use(cors());
 
 // 디비 연결을 합시다.
 
-mongoose.connect('mongodb://localhost:27017/seoul', {useNewUrlParser:true})
+mongoose.connect('mongodb+srv://mealkhu:12345@cluster0.wfklg.mongodb.net/mealkhu', {useNewUrlParser:true})
 
-const diningSchema ={
+const s_diningSchema ={
   title : String,
   content: String
 };
 
-const Dining = mongoose.model('Dining', diningSchema)
+const S_dining = mongoose.model('S_dining', s_diningSchema)
 
-const gdiningSchema = {
+const g_diningSchema = {
   title : String,
   content : String
 };
 
-const Gdining  = mongoose.model('Gdining', gdiningSchema)
+const G_dining  = mongoose.model('G_dining', g_diningSchema)
 
 
 
@@ -46,9 +46,9 @@ app.get('/', function(req,res){
 
 // 서울, 국제 api 
 app.get("/api/global", (req, res) => {
-  Gdining.find(function(err, foundGdinings){
+  G_dining.find(function(err, foundG_dinings){
     if(!err){
-      res.send(foundGdinings)
+      res.send(foundG_dinings)
     }
     else {
       res.send(err)
@@ -59,9 +59,9 @@ app.get("/api/global", (req, res) => {
 });
 
 app.get("/api/seoul", (req, res) => {
-  Dining.find(function(err, foundDinings){
+  S_dining.find(function(err, foundS_dinings){
     if(!err){
-      res.send(foundDinings)
+      res.send(foundS_dinings)
     }
     else{
       res.send(err);
