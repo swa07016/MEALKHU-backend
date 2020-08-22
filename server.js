@@ -14,7 +14,22 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors())
+
+let corsOptions = {
+  origin: 'http://mealkhu.com', // 허용되는 Origin
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+ 
+app.get('/api/se', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for only example.com.'})
+})
+
+
+
+
+
+
 
 // 디비 연결을 합시다.
 
@@ -44,8 +59,8 @@ app.get('/', function(req,res){
   res.send('hello')
 })
 
-// 서울, 국제 api 
-app.get("/api/global", (req, res) => {
+// 국제 api 
+app.get("/api/global",  (req, res) => {
   G_dining.find(function(err, foundG_dinings){
     if(!err){
       res.send(foundG_dinings)
@@ -57,7 +72,7 @@ app.get("/api/global", (req, res) => {
 
 
 });
-
+//서울 api
 app.get("/api/seoul", (req, res) => {
   S_dining.find(function(err, foundS_dinings){
     if(!err){
