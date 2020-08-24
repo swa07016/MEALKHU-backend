@@ -1,9 +1,16 @@
 //jshint esversion:6
 
+const http = require('http')
+
+//heroku 깨어주기
+setInterval(function(){
+  http.get('http://khumeal.herokuapp.com')
+},600000) //every 10 minutes
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const cors = require('cors');
+// const cors = require('cors');
 const mongoose = require('mongoose');
 const { strict } = require("assert");
 
@@ -16,14 +23,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
-let corsOptions = {
-  origin: 'http://mealkhu.com', // 허용되는 Origin
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
+
+
+// let corsOptions = {
+//   origin: 'http://localhost:4000/', // 허용되는 Origin
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
  
-app.get('/api/se', cors(corsOptions), function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for only example.com.'})
-})
+// app.get('/api/se', cors(corsOptions), function (req, res, next) {
+//   G_dining.find(function(err, foundG_dinings){
+//     if(!err){
+//       res.send(foundG_dinings)
+//     }
+//     else {
+//       res.send(err)
+//     }
+  
+  
+// })
+// })
+
 
 
 
