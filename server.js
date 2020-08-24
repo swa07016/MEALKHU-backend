@@ -1,12 +1,5 @@
 //jshint esversion:6
 
-const http = require('http')
-
-//heroku 깨어주기
-setInterval(function(){
-  http.get('http://khumeal.herokuapp.com')
-},600000) //every 10 minutes
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
@@ -17,6 +10,14 @@ const { strict } = require("assert");
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+
+const http = require("http");
+setInterval(function () {
+http.get("http://khumeal.herokuapp.com");
+}, 600000);
+
+
 
 
 app.use(bodyParser.json());
