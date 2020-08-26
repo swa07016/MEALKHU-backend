@@ -24,25 +24,35 @@ app.use(cors())
 
 
 
-// let corsOptions = {
-//   origin: 'http://localhost:4000/', // 허용되는 Origin
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+let corsOptions = {
+  origin: 'http://www.naver.com', // 허용되는 Origin
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
  
-// app.get('/api/se', cors(corsOptions), function (req, res, next) {
-//   G_dining.find(function(err, foundG_dinings){
-//     if(!err){
-//       res.send(foundG_dinings)
-//     }
-//     else {
-//       res.send(err)
-//     }
-  
-  
-// })
-// })
+
+app.get('/api/global', cors(corsOptions), function (req, res, next) {
+  G_dining.find(function(err, foundG_dinings){
+    if(!err){
+      res.send(foundG_dinings)
+    }
+    else {
+      res.send(err)
+    } 
+})
+});
 
 
+
+app.get('/api/seoul', cors(corsOptions), function (req, res, next) {
+  S_dining.find(function(err, foundS_dinings){
+    if(!err){
+      res.send(foundS_dinings)
+    }
+    else {
+      res.send(err)
+    } 
+})
+});
 
 
 
@@ -78,29 +88,29 @@ app.get('/', function(req,res){
 })
 
 // 국제 api 
-app.get("/api/global",  (req, res) => {
-  G_dining.find(function(err, foundG_dinings){
-    if(!err){
-      res.send(foundG_dinings)
-    }
-    else {
-      res.send(err)
-    }
-  });
+// app.get("/api/global",  (req, res) => {
+//   G_dining.find(function(err, foundG_dinings){
+//     if(!err){
+//       res.send(foundG_dinings)
+//     }
+//     else {
+//       res.send(err)
+//     }
+//   });
 
 
-});
-//서울 api
-app.get("/api/seoul", (req, res) => {
-  S_dining.find(function(err, foundS_dinings){
-    if(!err){
-      res.send(foundS_dinings)
-    }
-    else{
-      res.send(err);
-    }
-  });
-})
+// });
+// //서울 api
+// app.get("/api/seoul", (req, res) => {
+//   S_dining.find(function(err, foundS_dinings){
+//     if(!err){
+//       res.send(foundS_dinings)
+//     }
+//     else{
+//       res.send(err);
+//     }
+//   });
+// })
 
 
 
