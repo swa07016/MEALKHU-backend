@@ -25,7 +25,7 @@ app.use(cors())
 
 
 let corsOptions = {
-  origin: 'https://mealkhu-test.herokuapp.com/menu', // 허용되는 Origin
+  origin: 'https://mealkhu-test.herokuapp.com/', // 허용되는 Origin
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
  
