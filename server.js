@@ -22,12 +22,29 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 
+let whitelist = ['https://mealkhu-test.herokuapp.com', 'http://www.mealkhu.com']
+
+let corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+
+
+
+
+
 
 //cors 정책 
-let corsOptions = {
-  origin: 'https://mealkhu-test.herokuapp.com', // 허용되는 Origin
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// let corsOptions = {
+//   origin: 'https://mealkhu-test.herokuapp.com', // 허용되는 Origin
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
  
 
 
