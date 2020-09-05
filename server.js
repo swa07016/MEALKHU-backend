@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 
-let whitelist = ['https://mealkhu-test.herokuapp.com', 'http://www.mealkhu.com']
+let whitelist = ['https://mealkhu-test.herokuapp.com', 'https://www.mealkhu.com']
 
 let corsOptions = {
   origin: function (origin, callback) {
