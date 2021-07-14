@@ -1,7 +1,7 @@
 //jshint esversion:6
 const http = require('http');
 setInterval(function(){
-  http.get("http://khumeal.herokuapp.com");}, 600000
+  http.get("https://khumeal.herokuapp.com");}, 600000
   );
 
 const express = require("express");
