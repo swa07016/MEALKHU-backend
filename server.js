@@ -50,7 +50,10 @@ let corsOptions = {
 
 // 디비 연결을 합시다.
 
-mongoose.connect('mongodb+srv://mealkhu:12345@cluster0.wfklg.mongodb.net/mealkhu', {useNewUrlParser:true})
+
+// mongodb+srv://mealkhu:12345@cluster0.wfklg.mongodb.net/mealkhu
+
+mongoose.connect('mongodb+srv://mealkhu:12345@cluster0.wfklg.mongodb.net/mealkhu?retryWrites=true&w=majority',{useNewUrlParser:true})
 
 const s_diningSchema ={
   title : String,
