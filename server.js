@@ -1,10 +1,11 @@
 //jshint esversion:6
-const http = require('https');
+const https = require('https');
 setInterval(function(){
-  http.get("https://khumeal.herokuapp.com");}, 600000
+  https.get("https://khumeal.herokuapp.com");}, 600000
   );
 
 const express = require("express");
+const asyncify = require('express-asyncify');
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const cors = require('cors');
@@ -12,7 +13,7 @@ const mongoose = require('mongoose');
 const { strict } = require("assert");
 
 
-const app = express();
+const app = asyncify(express());
 const port = process.env.PORT || 5000;
 
 
@@ -72,14 +73,14 @@ const G_dining  = mongoose.model('G_dining', g_diningSchema)
 
 
 // 홈 화면 (임시)
-app.get('/', function(req,res){
+app.get('/', async (req,res)=>{
   res.send('hello')
 })
 
- 
+
 //국제 api
-app.get('/api/global', cors(corsOptions), function (req, res, next) {
-  G_dining.find(function(err, foundG_dinings){
+app.get('/api/global', cors(corsOptions), async function (req, res, next) {
+  await G_dining.find(function(err, foundG_dinings){
     if(!err){
       res.send(foundG_dinings)
     }
@@ -91,8 +92,8 @@ app.get('/api/global', cors(corsOptions), function (req, res, next) {
 
 
 //서울 api
-app.get('/api/seoul', cors(corsOptions), function (req, res, next) {
-  S_dining.find(function(err, foundS_dinings){
+app.get('/api/seoul', cors(corsOptions), async function (req, res, next) {
+  await S_dining.find(function(err, foundS_dinings){
     if(!err){
       res.send(foundS_dinings)
     }
