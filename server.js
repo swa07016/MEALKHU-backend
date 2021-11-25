@@ -1,9 +1,12 @@
 //jshint esversion:6
+
+// heroku 주기적으로 깨어주기 
 const https = require('https');
 setInterval(function(){
   https.get("https://khumeal.herokuapp.com");}, 600000
   );
 
+  // express 모듈, 비동기 함수, cors, mongoose 이용  
 const express = require("express");
 const asyncify = require('express-asyncify');
 const bodyParser = require("body-parser");
@@ -17,12 +20,11 @@ const app = asyncify(express());
 const port = process.env.PORT || 5000;
 
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
-
+// cors 허용 사이트 
 let whitelist = ['https://mealkhu-test.herokuapp.com', 'https://www.mealkhu.com']
 
 let corsOptions = {
@@ -35,18 +37,6 @@ let corsOptions = {
   }
 }
 
-
-
-
-
-
-
-//cors 정책 
-// let corsOptions = {
-//   origin: 'https://mealkhu-test.herokuapp.com', // 허용되는 Origin
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
- 
 
 
 // 디비 연결을 합시다.
@@ -72,7 +62,7 @@ const G_dining  = mongoose.model('G_dining', g_diningSchema)
 
 
 
-// 홈 화면 (임시)
+// 홈 화면 
 app.get('/', async (req,res)=>{
   res.send('hello')
 })
@@ -102,8 +92,6 @@ app.get('/api/seoul', cors(corsOptions), async function (req, res, next) {
     } 
 })
 });
-
-
 
 
 
