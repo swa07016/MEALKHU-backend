@@ -64,9 +64,11 @@ const G_dining  = mongoose.model('G_dining', g_diningSchema)
 
 
 // 홈 화면 
-app.get('/', async (req,res)=>{
-  res.send('hello')
-})
+app.get('/',function (req, res) {
+
+  res.send('Hello')
+}
+)
 
 
 //국제 api
