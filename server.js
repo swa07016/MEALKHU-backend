@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
+
 // cors 허용 사이트 
 let whitelist = ['https://mealkhu-test.herokuapp.com', 'https://www.mealkhu.com']
 
