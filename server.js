@@ -26,7 +26,7 @@ app.use(cors())
 
 
 // cors 허용 사이트 
-let whitelist = ['https://mealkhu-test.herokuapp.com', 'https://www.mealkhu.com']
+let whitelist = ['https://mealkhu-test.herokuapp.com', 'https://www.mealkhu.com',]
 
 let corsOptions = {
   origin: function (origin, callback) {
